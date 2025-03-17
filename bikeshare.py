@@ -90,15 +90,19 @@ def station_stats(df):
     print('-' * 40)
 
 def trip_duration_stats(df):
-    """Displays statistics on trip duration."""
+    """(Previous docstring remains the same)"""
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
+
+    trip_durations = df['Trip Duration']  # Alias for readability
+    total_hours = trip_durations.sum() / 3600
+    mean_minutes = trip_durations.mean() / 60
     
-    print(f"Total Travel Time: {df['Trip Duration'].sum() / 3600:.2f} hours")
-    print(f"Mean Travel Time: {df['Trip Duration'].mean() / 60:.2f} minutes")
-    
-    print(f"\nThis took {time.time() - start_time:.4f} seconds.")
-    print('-' * 40)
+    print(f"Total Travel Time: {total_hours:.2f} hours")
+    print(f"Mean Travel Time: {mean_minutes:.2f} minutes")
+
+    print("\nThis took %s seconds." % (time.time() - start_time))
+    print('-'*40)
 
 def user_stats(df):
     """Displays statistics on bikeshare users."""
