@@ -6,32 +6,23 @@ CITY_DATA = { 'chicago': 'chicago.csv',
               'new york city': 'new_york_city.csv',
               'washington': 'washington.csv' }
 
-def get_valid_input(prompt, valid_options):
-    """Get user input and validate it against a list of options.
-    
-    Args:
-        prompt (str): The input prompt to display.
-        valid_options (list): List of acceptable input values.
-    Returns:
-        str: Validated user input in lowercase.
-    """
-    while True:
-        user_input = input(prompt).lower()
-        if user_input in valid_options:
-            return user_input
-        print(f"Invalid input. Please choose from: {', '.join(valid_options)}.")
-
 def get_filters():
     """(Previous docstring remains the same)"""
     print('Hello! Let\'s explore some US bikeshare data!')
     
     cities = CITY_DATA.keys()
-    city_prompt = "Please enter a city (chicago, new york city, washington): "
-    city = get_valid_input(city_prompt, cities)
+    while True:
+        city = input("Please enter a city (chicago, new york city, washington): ").lower()
+        if city in cities:
+            break
+        print("Invalid city. Please choose from: chicago, new york city, washington.")
 
     months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
-    month_prompt = "Please enter a month (all, january, february, ..., june): "
-    month = get_valid_input(month_prompt, months)
+    while True:
+        month = input("Please enter a month (all, january, february, ..., june): ").lower()
+        if month in months:
+            break
+        print("Invalid month. Please choose from: all, january, february, march, april, may, june.")
 
     days = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     while True:
@@ -44,13 +35,7 @@ def get_filters():
     return city, month, day
 
 def load_data(city, month, day):
-    """Load bikeshare data from a CSV file.
-
-    Returns:
-        pandas.DataFrame: The processed bikeshare dataset.
-    Raises:
-        FileNotFoundError: If the CSV file is missing.
-    """
+    """(Previous docstring remains the same)"""
     df = pd.read_csv(CITY_DATA[city.lower()])
     
     df['Start Time'] = pd.to_datetime(df['Start Time'])
@@ -110,12 +95,11 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-    trip_durations = df['Trip Duration']  # Alias for readability
-    total_hours = trip_durations.sum() / 3600
-    mean_minutes = trip_durations.mean() / 60
-    
-    print(f"Total Travel Time: {total_hours:.2f} hours")
-    print(f"Mean Travel Time: {mean_minutes:.2f} minutes")
+    total_travel_time = df['Trip Duration'].sum()
+    print(f"Total Travel Time: {total_travel_time / 3600:.2f} hours")
+
+    mean_travel_time = df['Trip Duration'].mean()
+    print(f"Mean Travel Time: {mean_travel_time / 60:.2f} minutes")
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
