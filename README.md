@@ -12,3 +12,7 @@ This project analyzes bikeshare data from three U.S. cities: Chicago, New York C
 - Calculate most frequent times, popular stations, trip durations, and user demographics.
 - Option to view raw data in chunks.
 
+## How to Run
+- Ensure Python 3 and pandas are installed (`pip install pandas`).
+- Place `chicago.csv`, `new_york_city.csv`, and `washington.csv` in the same directory as `bikeshare.py`.
+- Run `python bikeshare.py` and follow the prompts to filter and view stats.
