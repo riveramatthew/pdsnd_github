@@ -60,7 +60,11 @@ def load_data(city, month, day):
     return df
 
 def time_stats(df):
-    """(Previous docstring remains the same)"""
+    """Display statistics on the most frequent times of travel.
+
+    Args:
+        df (pandas.DataFrame): Filtered bikeshare dataset with 'Start Time' column.
+    """
     print('\nCalculating The Most Frequent Times of Travel...\n')
     start_time = time.time()
 
