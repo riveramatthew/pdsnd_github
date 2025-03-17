@@ -9,19 +9,12 @@ CITY_DATA = {
 }
 
 def get_valid_input(prompt, valid_options):
-    """Get user input and validate it against a list of options.
-    
-    Args:
-        prompt (str): The input prompt to display.
-        valid_options (list): List of acceptable input values.
-    Returns:
-        str: Validated user input in lowercase.
-    """
+    """Prompt user for input and validate against options."""
     while True:
-        user_input = input(prompt).lower()
-        if user_input in valid_options:
-            return user_input
-        print(f"Invalid input. Please choose from: {', '.join(valid_options)}.")
+        choice = input(prompt).lower()
+        if choice in valid_options:
+            return choice
+        print(f"Invalid input. Choose from: {', '.join(valid_options)}.")
 
 def get_filters():
     """(Previous docstring remains the same)"""
@@ -34,12 +27,12 @@ def get_filters():
     months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
     month_prompt = "Please enter a month (all, january, february, ..., june): "
     month = get_valid_input(month_prompt, months)
-    
-    city = get_user_input("Please enter a city (chicago, new york city, washington): ", CITY_DATA.keys())
-    month = get_user_input("Please enter a month (all, january, ..., june): ", ['all', 'january', 'february', 'march', 'april', 'may', 'june'])
-    day = get_user_input("Please enter a day (all, monday, ..., sunday): ", ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday'])
-    
-    print('-' * 40)
+
+    days = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
+    day_prompt = "Please enter a day (all, monday, tuesday, ..., sunday): "
+    day = get_valid_input(day_prompt, days)
+
+    print('-'*40)
     return city, month, day
 
 def load_data(city, month, day):
