@@ -1,7 +1,5 @@
-# BikeShare Project
-## Overview
-This project analyzes bike-sharing data to provide insights on usage patterns.
-
-## Usage
-Run `python bikeshare.py` to analyze the data.
+## How to Run
+- Ensure Python 3 is installed.
+- Place your bikeshare data CSV file in the same directory as `bikeshare.py`.
+- Run `python bikeshare.py` to see usage statistics.
 
