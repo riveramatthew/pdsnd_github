@@ -8,16 +8,32 @@ CITY_DATA = {
     'washington': 'washington.csv'
 }
 
-def get_filters():
-    """Prompts user for city, month, and day filters."""
-    print("Hello! Let's explore some US bikeshare data!")
+def get_valid_input(prompt, valid_options):
+    """Get user input and validate it against a list of options.
     
-    def get_user_input(prompt, valid_options):
-        while True:
-            user_input = input(prompt).lower()
-            if user_input in valid_options:
-                return user_input
-            print(f"Invalid input. Please choose from: {', '.join(valid_options)}")
+    Args:
+        prompt (str): The input prompt to display.
+        valid_options (list): List of acceptable input values.
+    Returns:
+        str: Validated user input in lowercase.
+    """
+    while True:
+        user_input = input(prompt).lower()
+        if user_input in valid_options:
+            return user_input
+        print(f"Invalid input. Please choose from: {', '.join(valid_options)}.")
+
+def get_filters():
+    """(Previous docstring remains the same)"""
+    print('Hello! Let\'s explore some US bikeshare data!')
+    
+    cities = CITY_DATA.keys()
+    city_prompt = "Please enter a city (chicago, new york city, washington): "
+    city = get_valid_input(city_prompt, cities)
+
+    months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
+    month_prompt = "Please enter a month (all, january, february, ..., june): "
+    month = get_valid_input(month_prompt, months)
     
     city = get_user_input("Please enter a city (chicago, new york city, washington): ", CITY_DATA.keys())
     month = get_user_input("Please enter a month (all, january, ..., june): ", ['all', 'january', 'february', 'march', 'april', 'may', 'june'])
