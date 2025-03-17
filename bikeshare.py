@@ -44,7 +44,13 @@ def get_filters():
     return city, month, day
 
 def load_data(city, month, day):
-    """(Previous docstring remains the same)"""
+    """Load bikeshare data from a CSV file.
+
+    Returns:
+        pandas.DataFrame: The processed bikeshare dataset.
+    Raises:
+        FileNotFoundError: If the CSV file is missing.
+    """
     df = pd.read_csv(CITY_DATA[city.lower()])
     
     df['Start Time'] = pd.to_datetime(df['Start Time'])
