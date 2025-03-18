@@ -17,38 +17,29 @@ def get_valid_input(prompt, valid_options):
         print(f"Invalid input. Choose from: {', '.join(valid_options)}.")
 
 def get_filters():
-    """(Previous docstring remains the same)"""
+    """Returns city, month, and day filters based on user input."""
     print('Hello! Let\'s explore some US bikeshare data!')
     
     cities = CITY_DATA.keys()
-    while True:
-        city = input("Please enter a city (chicago, new york city, washington): ").lower()
-        if city in cities:
-            break
-        print("Invalid city. Please choose from: chicago, new york city, washington.")
+    city_prompt = "Please enter a city (chicago, new york city, washington): "
+    city = get_valid_input(city_prompt, cities)
 
     months = ['all', 'january', 'february', 'march', 'april', 'may', 'june']
-<<<<<<< HEAD
-    while True:
-        month = input("Please enter a month (all, january, february, ..., june): ").lower()
-        if month in months:
-            break
-        print("Invalid month. Please choose from: all, january, february, march, april, may, june.")
-
+    month_prompt = "Please enter a month (all, january, february, ..., june): "
+    month = get_valid_input(month_prompt, months)
+            
     days = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
-    while True:
-        day = input("Please enter a day (all, monday, tuesday, ..., sunday): ").lower()
-        if day in days:
-            break
-        print("Invalid day. Please choose from: all, monday, tuesday, wednesday, thursday, friday, saturday, sunday.")
-=======
+    day_prompt = "Please enter a day (all, monday, tuesday, ..., sunday): "
+    day = get_valid_input(day_prompt, days)
+
+    print('-'*40)
+    return city, month, day=======
     month_prompt = "Please enter a month (all, january, february, ..., june): "
     month = get_valid_input(month_prompt, months)
 
     days = ['all', 'monday', 'tuesday', 'wednesday', 'thursday', 'friday', 'saturday', 'sunday']
     day_prompt = "Please enter a day (all, monday, tuesday, ..., sunday): "
     day = get_valid_input(day_prompt, days)
->>>>>>> refactoring
 
     print('-'*40)
     return city, month, day
@@ -118,17 +109,9 @@ def trip_duration_stats(df):
     print('\nCalculating Trip Duration...\n')
     start_time = time.time()
 
-<<<<<<< HEAD
-    total_travel_time = df['Trip Duration'].sum()
-    print(f"Total Travel Time: {total_travel_time / 3600:.2f} hours")
-
-    mean_travel_time = df['Trip Duration'].mean()
-    print(f"Mean Travel Time: {mean_travel_time / 60:.2f} minutes")
-=======
     durations = df['Trip Duration']  # Alias for efficiency
     print(f"Total Travel Time: {durations.sum() / 3600:.2f} hours")
     print(f"Mean Travel Time: {durations.mean() / 60:.2f} minutes")
->>>>>>> refactoring
 
     print("\nThis took %s seconds." % (time.time() - start_time))
     print('-'*40)
